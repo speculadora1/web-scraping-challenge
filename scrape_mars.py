@@ -143,8 +143,18 @@ def scrape():
     # read_html returns a list, use index to store the table as a df
     mars_facts = table[0]
 
-    # print out html code for table
-    print(mars_facts.to_html(header = False))
+    # convert to html code for table
+    html_code = mars_facts.to_html(header = False, index = False)
+
+    # replace table wrapper so bootstrap table can be used
+    html_code = html_code.replace('<table border="1" class="dataframe">', '')
+    html_code = html_code.replace('</table>', '')
+
+    # drop existing collection
+    db.facts.drop()
+
+    # insert data
+    db.facts.insert_one({'html_code': html_code})
 
     
     

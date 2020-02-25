@@ -17,12 +17,14 @@ def index():
     latest_news = mongo.db.news.find_one()
     featured_img = mongo.db.featured.find_one()
     mars_weather = mongo.db.weather.find_one()
+    mars_facts = mongo.db.facts.find_one()
     hemispheres = list(mongo.db.hemispheres.find())
     
     return render_template("index.html", 
         latest_news = latest_news,
         featured_img = featured_img, 
-        mars_weather = mars_weather, 
+        mars_weather = mars_weather,
+        mars_facts = mars_facts,
         hemispheres = hemispheres)
 
 # create route that runs scrape function
