@@ -17,7 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="../static/style.css">
 
 </head>
 
@@ -29,8 +29,7 @@
                 <div class="jumbotron">
                     <div class="scrape-container">
                         <h1>Mission to Mars</h1>
-                        <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</button>
-                        </a>
+                        <a class="btn btn-primary" href="/scrape" role="button">Scrape New Data</button></a>
                     </div>
                 </div>
             </div>
@@ -39,12 +38,15 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="mars-news">
-                    <h4>Latest Mars News</h4>
+                    <h3>Latest Mars News</h3>
+                    <br>
                     <h6>{{ latest_news.news_title }}</h6>
                     <p>{{ latest_news.news_p }}</p>
                 </div>
             </div>
         </div>
+
+        <hr>
 
         <div class="row">
             <div class="col-lg-9">
@@ -60,6 +62,7 @@
                         <p>{{ mars_weather.weather }}</p>
                     </div>
                 </div>
+                <hr>
                 <div class="col-lg-12">
                     <div class="mars-facts">
                         <h6>Mars Facts</h6>
@@ -108,24 +111,19 @@
             </div>
         </div>
 
+        <hr>
+        
+        <h1>Hemispheres of Mars</h1>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="col-lg-12">
-
-                </div>
-                <div class="col-lg-12">
-
-                </div>
-            </div>
-
-            <div class="col-lg-6">
-                <div class="col-lg-12">
-
-                </div>
-                <div class="col-lg-12">
-
-                </div>
-            </div>
+                    {% for hemisphere in hemispheres %}
+                    <div class="col-lg-6">
+                        <div class="hemisphere-img">
+                        <img src="{{ hemisphere.img_url }}" alt="Mars Hemisphere" width=100%>
+                        <hr>
+                        <h6>{{ hemisphere.title }}</h6>
+                        </div>
+                    </div>
+                    {% endfor %}
         </div>
 
     </div>
